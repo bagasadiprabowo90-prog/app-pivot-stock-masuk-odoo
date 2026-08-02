@@ -1,0 +1,16 @@
+{
+    "name": "app-pivot-stock-masuk-odoo",
+    "version": "1.0.0",
+    "description": "Web app untuk memproses file Transfer (stock.picking) dari Odoo menjadi pivot SKU + Batch Number.",
+    "type": "module",
+    "main": "server.js",
+    "scripts": {
+        "start": "node server.js",
+        "dev": "node --watch server.js"
+    },
+    "dependencies": {
+        "express": "^4.19.2",
+        "multer": "^1.4.5-lts.1",
+        "exceljs": "^4.4.0"
+    }
+}
