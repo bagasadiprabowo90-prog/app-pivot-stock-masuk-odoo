@@ -15,14 +15,14 @@ pivot **SKU + Batch + Qty**.
 - Batch kosong tetap diproses dan digabung berdasarkan SKU.
 - Menampilkan statistik, preview hasil, dan mengunduh file Excel pivot.
 
-## Menjalankan secara lokal
+## Menjalankan secara lokal dengan Streamlit
 
 ```bash
-npm install
-npm start
+python -m pip install -r requirements.txt
+streamlit run app.py
 ```
 
-Buka <http://localhost:3000>.
+Streamlit akan menampilkan alamat aplikasi di browser.
 
 Untuk mode development dengan auto-restart:
 
@@ -30,26 +30,14 @@ Untuk mode development dengan auto-restart:
 npm run dev
 ```
 
-## Deploy ke Railway
+## Deploy ke Streamlit Community Cloud
 
-Project ini adalah aplikasi Node.js/Express, bukan Streamlit/Python.
-Railway akan mendeteksi `package.json` dan menjalankan `npm start`.
+1. Push perubahan repository ke GitHub.
+2. Buka <https://share.streamlit.io> dan pilih **Create app**.
+3. Pilih repository, branch `main`, lalu set **Main file path** menjadi `app.py`.
+4. Klik **Deploy**.
 
-1. Push repository ini ke GitHub.
-2. Di Railway pilih **New Project → Deploy from GitHub repo**.
-3. Pilih repository ini.
-4. Tunggu build selesai, lalu pilih **Settings → Networking → Generate Domain**.
-5. Buka domain yang dibuat Railway.
-
-Konfigurasi deployment sudah tersedia di `railway.json` dan `Procfile`. Railway
-menyediakan `PORT` secara otomatis; server membaca nilai tersebut.
-
-### Catatan filesystem
-
-File upload hanya dipakai selama proses dan dihapus setelah selesai. File hasil
-Excel disimpan sementara di memory selama 10 menit menggunakan token download,
-sehingga aplikasi tidak membutuhkan Railway Volume. Jika service restart atau
-token kedaluwarsa, proses upload perlu diulang.
+Konfigurasi ukuran upload dibatasi menjadi 10 MB melalui `.streamlit/config.toml`.
 
 ## Struktur input
 
